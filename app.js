@@ -1,4 +1,4 @@
-const calculateAttack  = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+const calculateRandomValue  = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 const app = Vue.createApp({
     data() {
@@ -10,17 +10,27 @@ const app = Vue.createApp({
     },
     methods: {
         playerAttack() {
-            this.monsterHP -= calculateAttack(5, 12);
+            this.monsterHP -= calculateRandomValue(5, 12);
             this.monsterAttack();
             this.currentTurn += 1;
         },
         monsterAttack() {
-            this.playerHP -= calculateAttack(8, 15);
+            this.playerHP -= calculateRandomValue(8, 15);
         },
         specialAttack() {
-            this.monsterHP -= calculateAttack(10, 25);
+            this.monsterHP -= calculateRandomValue(10, 25);
             this.monsterAttack();
             this.currentTurn += 1;
+        },
+        playerHeal() {
+            const healAmount =  calculateRandomValue(8, 20);
+            if (this.playerHP + healAmount > 100) {
+                this.playerHP = 100
+            } else {
+                this.playerHP + healAmount
+            }
+            this.monsterAttack();
+            this.currentTurn +=1;
         }
     },
     computed: {
