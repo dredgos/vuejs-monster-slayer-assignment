@@ -23,11 +23,11 @@ const app = Vue.createApp({
             this.currentTurn += 1;
         },
         playerHeal() {
-            const healAmount =  calculateRandomValue(8, 20);
+            const healAmount = calculateRandomValue(8, 20);
             if (this.playerHP + healAmount > 100) {
                 this.playerHP = 100
             } else {
-                this.playerHP + healAmount
+                this.playerHP += healAmount
             }
             this.monsterAttack();
             this.currentTurn +=1;
