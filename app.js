@@ -8,15 +8,22 @@ const app = Vue.createApp({
         }
     },
     methods: {
-        playerAttack () {
+        playerAttack() {
             this.monsterHP -= calculateAttack(5, 12);
-            this.monsterAttack()
+            this.monsterAttack();
         },
         monsterAttack() {
             this.playerHP -= calculateAttack(8, 15);
+        },
+    },
+    computed: {
+        playerBarWidth() {
+            return {width: this.playerHP + '%'}
+        },
+        monsterBarWidth() {
+            return {width: this.monsterHP + '%'}
         }
-    }
-
+    },
 });
 
 app.mount('#game');
