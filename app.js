@@ -32,14 +32,24 @@ const app = Vue.createApp({
             }
             this.monsterAttack();
             this.currentTurn +=1;
+        },
+        startNewGame() {
+            this.monsterHP = 100,
+            this.playerHP = 100,
+            this.currentTurn = 0,
+            this.winner = null
+        },
+        surrender() {
+            this.winner = 'monster'
+            this.playerHP = 0
         }
     },
     computed: {
         playerBarWidth() {
-            return {width: this.playerHP + '%'}
+            return this.playerHP < 0 ? { width: '0%'} : {width: this.playerHP + '%'}
         },
         monsterBarWidth() {
-            return {width: this.monsterHP + '%'}
+            return this.monsterHP < 0 ? { width: '0%'} : {width: this.monsterHP + '%'}
         },
         specialAttackAvailable() {
             return this.currentTurn % 3 !== 0;
