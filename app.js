@@ -5,7 +5,8 @@ const app = Vue.createApp({
         return {
             playerHP: 100,
             monsterHP: 100,
-            currentTurn: 0
+            currentTurn: 0,
+            winner: null
         }
     },
     methods: {
@@ -44,6 +45,22 @@ const app = Vue.createApp({
             return this.currentTurn % 3 !== 0;
         }
     },
+    watch: {
+        playerHP(value) {
+            if (value <= 0 && this.monsterHP <= 0) {
+                this.winner = 'draw';
+            } else if (value <= 0) {
+                this.winner = 'monster';
+            }
+        },
+        monsterHealth(value) {
+            if (value <= 0 && this.playerHP <= 0) {
+                this.winner = 'draw';
+            } else if (value <= 0) {
+                this.winner = 'player';
+            }
+        }
+    }
 });
 
 app.mount('#game');
