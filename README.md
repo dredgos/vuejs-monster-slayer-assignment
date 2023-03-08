@@ -5,4 +5,4 @@ A simple game utilisiting the core concepts of Vue including
 - Event listeners
 - Methods, computer properties & watchers
 - Conditional rendering using v-if, v-else-if & v-else
-- List rending using v-for
+- List rendering using v-for
