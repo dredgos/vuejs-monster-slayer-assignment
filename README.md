@@ -1,4 +1,4 @@
-# vuejs-monster-slayer-assignment
+# VueJS Monster Slayer Game
 
 A simple game utilisiting the core concepts of Vue including
 - Data binding
